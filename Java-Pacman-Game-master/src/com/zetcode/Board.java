@@ -234,7 +234,7 @@ public class Board extends JPanel implements ActionListener {
         }
 
         // Verifica se os fantasmas devem voltar a existir
-        if (ghostsStopped && System.currentTimeMillis() - lastStopTime > 3000) {
+        else if (ghostsStopped && System.currentTimeMillis() - lastStopTime > 3000) {
             ghostsStopped = false;
             lastStopTime = System.currentTimeMillis();
         }
@@ -488,10 +488,10 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void initGame() {
-    	pacsLeft = 2; //reduzido o número de vidas iniciais para 2 por padrão
+    	pacsLeft = 2; //reduzido o nÃºmero de vidas iniciais para 2 por padrÃ£o
         score = 0;
         initLevel();
-        N_GHOSTS = 2; //reduzido o número de fantasmas iniciais para 2 por padrão
+        N_GHOSTS = 2; //reduzido o nÃºmero de fantasmas iniciais para 2 por padrÃ£o
         currentSpeed = 3;
     }
 
