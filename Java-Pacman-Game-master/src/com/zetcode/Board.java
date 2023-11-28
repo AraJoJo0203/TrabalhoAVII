@@ -215,7 +215,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void death() {
-
+	score -= 50;
         pacsLeft--;
 
         if (pacsLeft == 0) {
