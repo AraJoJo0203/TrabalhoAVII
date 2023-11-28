@@ -80,7 +80,7 @@ public class Board extends JPanel implements ActionListener {
     private short[] screenData;
     private Timer timer;
     private long lastStopTime = System.currentTimeMillis();
-    private boolean ghostsStopped = false;
+    private boolean ghostVisible = false;
         
     
     public Board() {
@@ -228,21 +228,21 @@ public class Board extends JPanel implements ActionListener {
     private void moveGhosts(Graphics2D g2d) {
         
     	// Verifica se os fantasmas devem sumir
-        if (!ghostsStopped && System.currentTimeMillis() - lastStopTime > 20000) {
-            ghostsStopped = true;
+        if (!ghostVisible && System.currentTimeMillis() - lastStopTime > 20000) {
+            ghostVisible = true;
             lastStopTime = System.currentTimeMillis();
         }
 
         // Verifica se os fantasmas devem voltar a existir
-        else if (ghostsStopped && System.currentTimeMillis() - lastStopTime > 3000) {
-            ghostsStopped = false;
+        else if (ghostVisible && System.currentTimeMillis() - lastStopTime > 3000) {
+            ghostVisible = false;
             lastStopTime = System.currentTimeMillis();
         }
     	
         short i;
         int pos;
         int count;
-        if (!ghostsStopped) {
+        if (!ghostVisible) {
 	        for (i = 0; i < N_GHOSTS; i++) {
 	            if (ghost_x[i] % BLOCK_SIZE == 0 && ghost_y[i] % BLOCK_SIZE == 0) {
 	                pos = ghost_x[i] / BLOCK_SIZE + N_BLOCKS * (int) (ghost_y[i] / BLOCK_SIZE);
